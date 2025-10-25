@@ -6,10 +6,20 @@ import org.testng.annotations.Test;
 public class CashbackHackServiceJUnit4Test {
 
 @Test
-    public void testRemain() {
+    public void testRemainPositive() {
     CashbackHackService service = new CashbackHackService();
-    Assert.assertEquals(900, service.remain(100));
-    Assert.assertEquals(1000, service.remain(1000));
-    Assert.assertEquals(999, service.remain(1));
+    Assert.assertEquals(100, service.remain(900));
+}
+
+@Test
+        public void testRemainBoundary() {
+    CashbackHackService service = new CashbackHackService();
+    Assert.assertEquals(0, service.remain(1000)); // упадет, ожидаем 0 вместо 1000
+}
+
+@Test
+        public void testRemainBelowBoundary() {
+    CashbackHackService service = new CashbackHackService();
+    Assert.assertEquals(1, service.remain(999));
    }
 }
