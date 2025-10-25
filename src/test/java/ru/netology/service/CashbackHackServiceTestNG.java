@@ -9,9 +9,20 @@ public class CashbackHackServiceTestNG {
     @Test
     public void testRemain() {
         CashbackHackService service = new CashbackHackService();
-        Assert.assertEquals(100, service.remain(900));
+        Assert.assertEquals(service.remain(900), 100);
+    }
 
-        Assert.assertEquals(1000, service.remain(1000));
-        Assert.assertEquals(1, service.remain(999));
+    @Test
+            public void testRemainBoundary() {
+        CashbackHackService service = new CashbackHackService();
+
+        Assert.assertEquals(service.remain(1000), 0); // ожидаеи ошибку из-за дефекта
+    }
+
+    @Test
+        public void testRemainBelowBoundary() {
+        CashbackHackService service = new CashbackHackService();
+
+        Assert.assertEquals(service.remain(999), 1);
     }
 }
