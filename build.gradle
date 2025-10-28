@@ -24,5 +24,4 @@ dependencies {
 test {
     useJUnitPlatform()
     useTestNG()
-    ignoreFailures = false
 }
