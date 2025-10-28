@@ -1,19 +1,20 @@
 name: Java CI with Gradle
 
-on:
-  push:
-    branches: [ main, testng, junit4 ]
+on: [push, pull_request]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Setup JDK 11
+      - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'temurin'
           java-version: '11'
-      - name: Build and test with Gradle
-        run: ./gradlew clean test
+          distribution: 'adopt'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew test
