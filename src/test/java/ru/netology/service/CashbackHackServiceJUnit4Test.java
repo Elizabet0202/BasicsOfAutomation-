@@ -14,7 +14,9 @@ public class CashbackHackServiceJUnit4Test {
 @Test
         public void testRemainBoundary() {
     CashbackHackService service = new CashbackHackService();
-    Assert.assertEquals(0, service.remain(1000)); // упадет, ожидаем 0 вместо 1000
+    int actual = service.remain(1000);
+    int expected = 0;
+    Assert.assertEquals(actual, expected); // упадет, ожидаем 0 вместо 1000
 }
 
 @Test
